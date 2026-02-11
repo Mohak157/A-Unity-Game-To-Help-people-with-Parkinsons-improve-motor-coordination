@@ -11,12 +11,28 @@ public class Obstacles : MonoBehaviour
     public float minY;
     public float timebtwnspawn;
     private float spawntime;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public float startBPM = 60f;
+    public float maxBPM = 90f;
+    public float bpmincreaserate = 2f;
+
+    private float currentBPM;
+    public AudioSource metronomeaudio;
 
 
-    // Update is called once per frame
+    void Start()
+    {
+        currentBPM= startBPM;
+        timebtwnspawn = 60f/currentBPM;
+        spawntime= Time.time;
+
+    }
+ 
     void Update()
     {
+        currentBPM +=(bpmincreaserate/60f)* Time.deltaTime;
+        currentBPM = Mathf.Clamp(currentBPM,startBPM,maxBPM);
+        timebtwnspawn = 60f/currentBPM;
         if (Time.time > spawntime)
         {
             Spawn();
@@ -25,6 +41,9 @@ public class Obstacles : MonoBehaviour
     }
     void Spawn()
     {
+        if (metronomeaudio!= null){
+            metronomeaudio.Play();
+        }
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
         Instantiate(obstacle, transform.position + new Vector3(randomX, randomY, 0), transform.rotation);
