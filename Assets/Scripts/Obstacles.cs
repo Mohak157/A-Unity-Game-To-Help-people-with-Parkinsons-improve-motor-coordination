@@ -22,17 +22,17 @@ public class Obstacles : MonoBehaviour
 
     void Start()
     {
-        currentBPM= startBPM;
-        timebtwnspawn = 60f/currentBPM;
-        spawntime= Time.time;
+        currentBPM = startBPM;
+        timebtwnspawn = 60f / currentBPM;
+        spawntime = Time.time;
 
     }
- 
+
     void Update()
     {
-        currentBPM +=(bpmincreaserate/60f)* Time.deltaTime;
-        currentBPM = Mathf.Clamp(currentBPM,startBPM,maxBPM);
-        timebtwnspawn = 60f/currentBPM;
+        currentBPM += (bpmincreaserate / 60f) * Time.deltaTime;
+        currentBPM = Mathf.Clamp(currentBPM, startBPM, maxBPM);
+        timebtwnspawn = 60f / currentBPM;
         if (Time.time > spawntime)
         {
             Spawn();
@@ -41,7 +41,8 @@ public class Obstacles : MonoBehaviour
     }
     void Spawn()
     {
-        if (metronomeaudio!= null){
+        if (metronomeaudio != null)
+        {
             metronomeaudio.Play();
         }
         float randomX = Random.Range(minX, maxX);

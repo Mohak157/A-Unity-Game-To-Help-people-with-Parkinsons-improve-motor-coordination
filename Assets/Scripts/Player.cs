@@ -5,18 +5,18 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-   
+
     public float playerSpeed = 5f;
 
-    
-    public float smoothTime = 0.2f; 
 
-   
-    public float tremorGracePeriod = 0.15f; 
+    public float smoothTime = 0.2f;
+
+
+    public float tremorGracePeriod = 0.15f;
 
     private Rigidbody2D rb;
-    private Vector2 currentVelocity; 
-    
+    private Vector2 currentVelocity;
+
     // Input State
     private float lastInputTime;
     private float lastDirectionY;
@@ -30,14 +30,14 @@ public class Player : MonoBehaviour
     {
         // 1. Gather Raw Input
         float rawDirectionY = 0f;
-        
+
         // Safety check for Input System
         if (Keyboard.current != null)
         {
             if (Keyboard.current.wKey.isPressed) rawDirectionY = 1f;
             else if (Keyboard.current.sKey.isPressed) rawDirectionY = -1f;
         }
-             // 2. Apply Tremor Filtering (Debouncing)
+        // 2. Apply Tremor Filtering (Debouncing)
         // If we have input, update the time and store the direction
         if (rawDirectionY != 0f)
         {
@@ -63,9 +63,9 @@ public class Player : MonoBehaviour
         // We use SmoothDamp with 'smoothTime' to create a fluid motion that is easier
         // for the eyes to track, reducing motion sickness and cognitive load.
         rb.linearVelocity = Vector2.SmoothDamp(
-            rb.linearVelocity, 
-            targetVelocity, 
-            ref currentVelocity, 
+            rb.linearVelocity,
+            targetVelocity,
+            ref currentVelocity,
             smoothTime
         );
     }

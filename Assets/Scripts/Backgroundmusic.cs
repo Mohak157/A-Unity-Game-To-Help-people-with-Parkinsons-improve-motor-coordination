@@ -4,15 +4,18 @@ using System.Collections.Generic;
 
 public class Backgroundmusic : MonoBehaviour
 {
-    private static Backgroundmusic backgroundMusic;
-  void Awake(){
-     if (backgroundMusic != null){
-        Destroy(gameObject);
+   private static Backgroundmusic backgroundMusic;
+   void Awake()
+   {
+      if (backgroundMusic != null)
+      {
+         Destroy(gameObject);
 
-     }
-     else{
-        backgroundMusic = this;
-        DontDestroyOnLoad(gameObject);
-     }
-  }
+      }
+      else
+      {
+         backgroundMusic = this;
+         DontDestroyOnLoad(gameObject);
+      }
+   }
 }
