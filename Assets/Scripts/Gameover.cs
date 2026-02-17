@@ -21,4 +21,9 @@ public class Gameover : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void goback()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 }
