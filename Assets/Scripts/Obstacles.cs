@@ -12,9 +12,9 @@ public class Obstacles : MonoBehaviour
     public float timebtwnspawn;
     private float spawntime;
 
-    public float startBPM = 60f;
-    public float maxBPM = 90f;
-    public float bpmincreaserate = 2f;
+    public float startBPM = 80f;
+    public float maxBPM = 120f;
+    public float bpmincreaserate = 5f;
 
     private float currentBPM;
     public AudioSource metronomeaudio;

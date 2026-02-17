@@ -370,8 +370,8 @@ MonoBehaviour:
   minY: -4
   timebtwnspawn: 0.9
   startBPM: 60
-  maxBPM: 90
-  bpmincreaserate: 2
+  maxBPM: 100
+  bpmincreaserate: 5
   metronomeaudio: {fileID: 0}
 --- !u!4 &333385712
 Transform:
@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 605454360}
   - component: {fileID: 605454359}
   - component: {fileID: 605454362}
+  - component: {fileID: 605454363}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -600,6 +601,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2047315084}
+  - {fileID: 1585340620}
   m_Father: {fileID: 736920061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &605454362
@@ -648,6 +650,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8.92705, y: 3.656323}
   m_EdgeRadius: 0
+--- !u!114 &605454363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605454358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4e8905cbd64144681daf56d04794fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
+  firepoint: {fileID: 1585340620}
+  lazer: {fileID: 4117526585849295448, guid: 15ed86370d9cb9e4f8e49a967d1f9ccd, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bacf5816ee4b53b4e985077814581e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
-  CameraSpeed: 10
+  CameraSpeed: 12
 --- !u!4 &736920061
 Transform:
   m_ObjectHideFlags: 0
@@ -1381,6 +1397,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550671047}
   m_CullTransparentMesh: 1
+--- !u!1 &1585340619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1585340620}
+  m_Layer: 0
+  m_Name: firing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1585340620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585340619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.64, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 605454361}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742272277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1342781ab8f60646978dc8caa199482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoopingBackground
-  BackgroundSpeed: 0.3
+  BackgroundSpeed: 0.5
   backgroundRenderer: {fileID: 1889311866}
 --- !u!23 &1889311866
 MeshRenderer:
