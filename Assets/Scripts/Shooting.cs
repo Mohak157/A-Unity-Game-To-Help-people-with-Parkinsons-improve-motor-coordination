@@ -4,6 +4,8 @@ public class Shooting : MonoBehaviour
 {
     public Transform firepoint;
     public GameObject lazer;
+    public AudioSource audioSource;   
+    public AudioClip shootSound;   
 
     // Update is called once per frame
     void Update()
@@ -18,5 +20,6 @@ public class Shooting : MonoBehaviour
     void Shoot()
     {
         Instantiate(lazer,firepoint.position,firepoint.rotation);
+        audioSource.PlayOneShot(shootSound);
     }
 }
