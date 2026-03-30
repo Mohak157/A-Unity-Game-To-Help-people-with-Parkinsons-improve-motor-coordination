@@ -1,52 +1,50 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class Obstacles : MonoBehaviour
 {
     public GameObject obstacle;
+
     public float maxX;
     public float minX;
     public float maxY;
     public float minY;
-    public float timebtwnspawn;
+
+    public float startSpawnDelay = 1.5f;
+    public float minSpawnDelay = 0.3f;
+    public float difficultyIncreaseRate = 0.05f;
+
+    private float currentSpawnDelay;
     private float spawntime;
-
-    public float startBPM = 80f;
-    public float maxBPM = 120f;
-    public float bpmincreaserate = 5f;
-
-    private float currentBPM;
-    public AudioSource metronomeaudio;
-
 
     void Start()
     {
-        currentBPM = startBPM;
-        timebtwnspawn = 60f / currentBPM;
+        currentSpawnDelay = startSpawnDelay;
         spawntime = Time.time;
-
     }
 
     void Update()
     {
-        currentBPM += (bpmincreaserate / 60f) * Time.deltaTime;
-        currentBPM = Mathf.Clamp(currentBPM, startBPM, maxBPM);
-        timebtwnspawn = 60f / currentBPM;
+
+        currentSpawnDelay -= difficultyIncreaseRate * Time.deltaTime;
+        currentSpawnDelay = Mathf.Clamp(currentSpawnDelay, minSpawnDelay, startSpawnDelay);
+
+
         if (Time.time > spawntime)
         {
             Spawn();
-            spawntime = Time.time + timebtwnspawn;
+            spawntime = Time.time + currentSpawnDelay;
         }
     }
+
     void Spawn()
     {
-        if (metronomeaudio != null)
-        {
-            metronomeaudio.Play();
-        }
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
-        Instantiate(obstacle, transform.position + new Vector3(randomX, randomY, 0), transform.rotation);
+
+        Instantiate(
+            obstacle,
+            transform.position + new Vector3(randomX, randomY, 0),
+            transform.rotation
+        );
     }
 }

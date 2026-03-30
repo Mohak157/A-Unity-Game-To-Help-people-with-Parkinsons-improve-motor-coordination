@@ -1,19 +1,21 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+
 public class Gameover : MonoBehaviour
 {
     public GameObject gameOverPanel;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public HighScoreManager highScoreManager;
 
+    private bool isGameOver = false;
 
-    // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Player") == null)
+        if (!isGameOver && GameObject.FindGameObjectWithTag("Player") == null)
         {
+            isGameOver = true;
+
             gameOverPanel.SetActive(true);
+            highScoreManager.GethighScore();
         }
     }
 
